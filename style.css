@@ -1,0 +1,203 @@
+:root {
+  --rosado: #f8c8dc;
+  --lila: #e6ccff;
+  --blanco: #ffffff;
+  --texto: #555;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  background: #fff7fb;
+  color: var(--texto);
+}
+
+/* HEADER */
+header {
+  background: var(--rosado);
+  padding: 20px;
+  text-align: center;
+}
+
+/* MENÚ */
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #444;
+  font-weight: bold;
+}
+
+/* MENÚ DESPLEGABLE */
+nav ul li ul {
+  display: none;
+  position: absolute;
+  background: var(--lila);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+nav ul li:hover ul {
+  display: block;
+}
+
+nav ul li ul li {
+  display: block;
+}
+
+/* SECCIONES */
+main {
+  padding: 20px;
+}
+
+section {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* GALERÍA */
+.galeria {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+/* TARJETA */
+.card-mascota {
+  width: 320px;
+  background: white;
+  padding: 15px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card-mascota img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* BOTONES */
+button {
+  background: var(--lila);
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--rosado);
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: var(--lila);
+  color: #444;
+  text-decoration: none;
+  border-radius: 20px;
+}
+
+.btn:hover {
+  background: var(--rosado);
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cards article {
+  width: 200px;
+  background: var(--blanco);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* FOOTER */
+footer {
+  background: var(--rosado);
+  text-align: center;
+  padding: 15px;
+}
+.filtros label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.filtros select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: none;
+  background: white;
+  font-family: 'Quicksand';
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card-ayuda {
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.card-ayuda:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.logo-filtro {
+  width: 100%;
+  max-width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.flecha {
+  background: white;
+  border: none;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.flecha:hover {
+  background: var(--rosado);
+  transform: scale(1.1);
+}
+button, .btn {
+  cursor: pointer;
+}
