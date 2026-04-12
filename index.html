@@ -66,18 +66,19 @@
       <div class="filtros">
         <h3>Filtrar 🐾</h3>
         <label>Especie:</label>
-        <select>
+        <select id="filtro-especie">
           <option>Todos</option>
           <option>Perros</option>
           <option>Gatos</option>
         </select>
         <label>Edad:</label>
-        <select>
+        <select id="filtro-edad">
           <option>Todas</option>
           <option>Cachorros</option>
           <option>Adultos</option>
           <option>Senior</option>
         </select>
+        <button class="btn-buscar" onclick="filtrarMascotas()">🔍 Buscar</button>
         <img src="img/logo.png" class="logo-filtro" alt="Logo Camino a Casa">
       </div>
 
@@ -136,7 +137,35 @@
 </main>
 
 <footer>
-  <p>© 2026 Camino a Casa 🐾</p>
+  <div class="footer-contenido">
+    <div class="footer-seccion">
+      <h4>Camino a Casa 🐾</h4>
+      <p>Conectando corazones con patitas desde 2026.</p>
+    </div>
+
+    <div class="footer-seccion">
+      <h4>Links rápidos</h4>
+      <a href="#">Inicio</a>
+      <a href="#">Adopción</a>
+      <a href="#">Ayuda</a>
+      <a href="#">Contacto</a>
+    </div>
+
+    <div class="footer-seccion">
+      <h4>Contacto</h4>
+      <p>📧 hola@caminoacasa.cl</p>
+      <p>📍 Santiago, Chile</p>
+    </div>
+
+    <div class="footer-seccion">
+      <h4>Redes sociales</h4>
+      <a href="#">📸 Instagram</a>
+      <a href="#">🎵 TikTok</a>
+      <a href="#">📘 Facebook</a>
+    </div>
+  </div>
+
+  <p class="footer-copy">© 2026 Camino a Casa — Hecho con 💖</p>
 </footer>
 
 <script>
@@ -175,6 +204,15 @@ function anterior() {
   index = (index - 1 + mascotas.length) % mascotas.length;
   mostrarMascota();
 }
+
+
+function filtrarMascotas() {
+  const especie = document.getElementById("filtro-especie").value;
+  const edad = document.getElementById("filtro-edad").value;
+  alert(`Buscando: ${especie} - ${edad}`);
+  // Aquí luego conectarás con la base de datos real
+}
+
 
 mostrarMascota();
 </script>
