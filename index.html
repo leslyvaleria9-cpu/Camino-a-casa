@@ -1,342 +1,142 @@
-<!-- Página desarrollada con apoyo de IA (ChatGPT) para estructura y estilos -->
+<!-- Página desarrollada con apoyo de IA (ChatGPT y Claude) para estructura y estilos -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Camino a Casa</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<style>
-:root {
-  --rosado: #f8c8dc;
-  --lila: #e6ccff;
-  --blanco: #ffffff;
-  --texto: #555;
-}
-
-/* FONDO CON PATITAS */
-body {
-  font-family: 'Quicksand', sans-serif;
-  margin: 0;
-  background: linear-gradient(#fff7fb, #ffeef7);
-  background-image: url('https://www.transparenttextures.com/patterns/paw-print.png');
-  color: var(--texto);
-}
-
-/* CENTRADO */
-main {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-
-/* HEADER */
-header {
-  background: var(--rosado);
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-/* MENÚ */
-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-nav ul li {
-  display: inline-block;
-  position: relative;
-  margin: 0 10px;
-}
-
-nav a {
-  text-decoration: none;
-  color: #444;
-  font-weight: bold;
-}
-
-/* DESPLEGABLE */
-nav ul li ul {
-  display: none;
-  position: absolute;
-  background: var(--lila);
-  padding: 10px;
-  border-radius: 10px;
-}
-
-nav ul li:hover ul {
-  display: block;
-}
-
-/* SECCIONES */
-section {
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  margin-bottom: 20px;
-  transition: 0.2s;
-}
-
-section:hover {
-  transform: translateY(-5px);
-}
-
-/* HERO */
-.hero {
-  display: flex;
-  gap: 20px;
-}
-
-.hero-texto, .hero-extra {
-  flex: 1;
-  padding: 20px;
-  border-radius: 15px;
-}
-
-.hero-extra {
-  background: var(--lila);
-}
-
-/* BOTONES */
-.btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  background: var(--lila);
-  border-radius: 20px;
-  text-decoration: none;
-  color: #444;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: var(--rosado);
-  transform: scale(1.05);
-}
-
-/* ADOPCIÓN */
-.adopcion {
-  display: flex;
-  gap: 20px;
-}
-
-.adopcion-galeria {
-  flex: 2;
-}
-
-.filtros {
-  flex: 1;
-  background: var(--lila);
-  padding: 20px;
-  border-radius: 15px;
-}
-
-/* GALERÍA */
-.galeria {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-}
-
-.card-mascota {
-  width: 300px;
-  padding: 15px;
-  border-radius: 20px;
-  background: white;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.card-mascota img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 15px;
-}
-
-button {
-  background: var(--lila);
-  border: none;
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* HISTORIA */
-.historia {
-  background: #fff0f6;
-  text-align: center;
-}
-
-/* CLUB */
-.club {
-  background: var(--lila);
-  text-align: center;
-}
-
-/* CARDS */
-.cards {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.cards article {
-  width: 200px;
-  padding: 15px;
-  border-radius: 15px;
-  background: white;
-}
-
-/* FOOTER */
-footer {
-  background: var(--rosado);
-  text-align: center;
-  padding: 15px;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camino a Casa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-<h1>Camino a Casa 🐾</h1>
-<nav>
-  <ul>
-    <li><a href="#">Inicio</a></li>
-    <li>
-      <a href="#">Adopción</a>
-      <ul>
-        <li><a href="#">Perros</a></li>
-        <li><a href="#">Gatos</a></li>
-      </ul>
-    </li>
-    <li><a href="#">Ayuda</a></li>
-    <li><a href="#">Contacto</a></li>
-  </ul>
-</nav>
+  <h1>Camino a Casa 🐾</h1>
+  <nav>
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li>
+        <a href="#">Adopción ▾</a>
+        <ul>
+          <li><a href="#">🐕 Perros</a></li>
+          <li><a href="#">🐱 Gatos</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Ayuda</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </nav>
 </header>
 
 <main>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-texto">
-    <h2>Encuentra a tu mejor amigo 💖</h2>
-    <p>Adopta, ama y cambia una vida.</p>
-    <a href="#" class="btn">Ver mascotas</a>
-  </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-texto">
+      <h2>Encuentra a tu mejor amigo 💖</h2>
+      <p>Adopta, ama y cambia una vida.</p>
+      <a href="#adopcion" class="btn">Ver mascotas</a>
+    </div>
+    <div class="hero-extra">
+      <h3>🐾 Historias reales</h3>
+      <p>"Adoptar cambió mi vida y la de mi Moka 💕"</p>
+      <p class="firma">— Lesly, fundadora</p>
+    </div>
+  </section>
 
-  <div class="hero-extra">
-    <h3>🐾 Historias reales</h3>
-    <p>"Adoptar cambió mi vida y la de mi Moka 💕"</p>
-  </div>
-</section>
+  <!-- ADOPCIÓN -->
+  <section id="adopcion" class="seccion-adopcion">
+    <div class="adopcion">
 
-<!-- ADOPCIÓN -->
-<section class="adopcion">
-
-  <div class="adopcion-galeria">
-    <h2>Mascotas en adopción 🐾</h2>
-
-    <div class="galeria">
-      <button onclick="anterior()" class="flecha">❮</button>
-
-      <div class="card-mascota">
-        <img id="imagen" alt="Mascotas en adopción">
-        <h3 id="nombre"></h3>
-        <p id="descripcion"></p>
-        <a href="#" class="btn">Adoptar</a>
+      <div class="adopcion-galeria">
+        <h2>Mascotas en adopción 🐾</h2>
+        <div class="galeria">
+          <button onclick="anterior()" class="flecha">❮</button>
+          <div class="card-mascota">
+            <img id="imagen" alt="Mascota en adopción">
+            <h3 id="nombre"></h3>
+            <p id="descripcion"></p>
+            <a href="#" class="btn">Adoptar 💖</a>
+          </div>
+          <button onclick="siguiente()" class="flecha">❯</button>
+        </div>
       </div>
 
-      <button onclick="siguiente()" class="flecha">❯</button>
+      <div class="filtros">
+        <h3>Filtrar 🐾</h3>
+        <label>Especie:</label>
+        <select>
+          <option>Todos</option>
+          <option>Perros</option>
+          <option>Gatos</option>
+        </select>
+        <label>Edad:</label>
+        <select>
+          <option>Todas</option>
+          <option>Cachorros</option>
+          <option>Adultos</option>
+          <option>Senior</option>
+        </select>
+        <img src="img/logo.png" class="logo-filtro" alt="Logo Camino a Casa">
+      </div>
+
     </div>
-  </div>
+  </section>
 
-  <div class="filtros">
-  <h3>Filtrar 🐾</h3>
+  <!-- HISTORIA -->
+  <section class="historia">
+    <h2>Mi historia con Moka 🐾</h2>
+    <p>
+      Este proyecto nació gracias a mi perrita Moka 💕
+      Ella cambió mi vida completamente, y me inspiró a ayudar a otros animales
+      a encontrar un hogar lleno de amor.
+    </p>
+  </section>
 
-  <label>Especie:</label>
-  <select>
-    <option>Todos</option>
-    <option>Perros</option>
-    <option>Gatos</option>
-  </select>
+  <!-- CLUB -->
+  <section class="club">
+    <h2>Club Antiestrés 🐶💆‍♀️</h2>
+    <p>Participa en sesiones con mascotas para reducir el estrés. Un espacio lleno de amor, calma y conexión.</p>
+    <a href="#" class="btn">Unirme</a>
+  </section>
 
-  <label>Edad:</label>
-  <select>
-    <option>Todas</option>
-    <option>Cachorros</option>
-    <option>Adultos</option>
-    <option>Senior</option>
-  </select>
-  <img src="img/logo.png" class="logo-filtro" alt="Logo Camino a Casa"   style="width:200px;">
-</div>
+  <!-- HOGAR TRANSITORIO -->
+  <section>
+    <h2>Hogar transitorio 🏡🐾</h2>
+    <p>Sé parte de nuestro programa de hogar transitorio. Puedes cuidar temporalmente a una mascota mientras encuentra su familia definitiva 💕</p>
+    <a href="#" class="btn">Quiero ayudar</a>
+  </section>
 
-</section>
-
-<!-- HISTORIA -->
-<section class="historia">
-  <h2>Mi historia con Moka 🐾</h2>
-  <p>
-    Este proyecto nació gracias a mi perrita Moka 💕  
-    Ella cambió mi vida completamente, y me inspiró a ayudar a otros animales  
-    a encontrar un hogar lleno de amor.
-  </p>
-</section>
-
-<!-- CLUB -->
-<section class="club">
-  <h2>Club Antiestrés 🐶💆‍♀️</h2>
-  <p>
-    Participa en sesiones con mascotas para reducir el estrés.  
-    Un espacio lleno de amor, calma y conexión.
-  </p>
-  <a href="#" class="btn">Unirme</a>
-</section>
-<section>
-  <h2>Hogar transitorio 🏡🐾</h2>
-  <p>
-    Sé parte de nuestro programa de hogar transitorio. 
-    Puedes cuidar temporalmente a una mascota mientras encuentra su familia definitiva 💕
-  </p>
-  <a href="#" class="btn">Quiero ayudar</a>
-</section>
-<!-- AYUDA -->
-<section>
-<h2>Formas de ayudar 🤝</h2>
-
-<div class="cards">
-  <article class="card-ayuda">
-  <a href="#" class="card-link">
-    <h3>💰 Donar</h3>
-    <p>Apoya con aportes.</p>
-  </a>
-</article>
-
-  <article class="card-ayuda">
-  <a href="#" class="card-link">
-    <h3>🐕 Voluntariado</h3>
-    <p>Ayuda directamente.</p>
-  </a>
-</article>
-
-  <article class="card-ayuda">
-  <a href="#" class="card-link">
-    <h3>🍖 Alimentos</h3>
-    <p>Dona comida, nuestros michis y lomitos te lo agradecerán.</p>
-  </a>
-</article>
-</div>
-</section>
+  <!-- AYUDA -->
+  <section>
+    <h2>Formas de ayudar 🤝</h2>
+    <div class="cards">
+      <article class="card-ayuda">
+        <a href="#" class="card-link">
+          <h3>💰 Donar</h3>
+          <p>Apoya con aportes.</p>
+        </a>
+      </article>
+      <article class="card-ayuda">
+        <a href="#" class="card-link">
+          <h3>🐕 Voluntariado</h3>
+          <p>Ayuda directamente.</p>
+        </a>
+      </article>
+      <article class="card-ayuda">
+        <a href="#" class="card-link">
+          <h3>🍖 Alimentos</h3>
+          <p>Dona comida, nuestros michis y lomitos te lo agradecerán.</p>
+        </a>
+      </article>
+    </div>
+  </section>
 
 </main>
 
 <footer>
-<p>© 2026 Camino a Casa</p>
+  <p>© 2026 Camino a Casa 🐾</p>
 </footer>
 
 <script>
@@ -381,5 +181,3 @@ mostrarMascota();
 
 </body>
 </html>
-
-<!-- Ajuste final -->

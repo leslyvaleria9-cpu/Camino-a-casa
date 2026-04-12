@@ -1,49 +1,105 @@
+/* ============================================
+   CAMINO A CASA — Estilos principales
+   Todos los estilos centralizados aquí
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+
 :root {
   --rosado: #f8c8dc;
+  --rosado-oscuro: #f0a0c0;
   --lila: #e6ccff;
+  --lila-oscuro: #d0a8f8;
   --blanco: #ffffff;
   --texto: #555;
+  --texto-oscuro: #333;
+  --sombra: 0 6px 20px rgba(200, 100, 150, 0.15);
+  --radio: 18px;
+}
+
+/* ============================================
+   BASE
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   font-family: 'Quicksand', sans-serif;
-  margin: 0;
-  background: #fff7fb;
+  background: linear-gradient(160deg, #fff7fb 0%, #ffeef7 50%, #f3eeff 100%);
+  background-attachment: fixed;
   color: var(--texto);
+  line-height: 1.6;
 }
 
-/* HEADER */
+/* ============================================
+   HEADER
+   ============================================ */
+
 header {
-  background: var(--rosado);
-  padding: 20px;
+  background: linear-gradient(135deg, var(--rosado), var(--lila));
+  padding: 20px 40px;
   text-align: center;
+  box-shadow: 0 4px 15px rgba(200, 100, 150, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-/* MENÚ */
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--texto-oscuro);
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+/* ============================================
+   MENÚ NAV
+   ============================================ */
+
 nav ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-nav ul li {
+nav > ul > li {
   display: inline-block;
   position: relative;
-  margin: 0 10px;
+  margin: 0 12px;
 }
 
 nav a {
   text-decoration: none;
   color: #444;
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: background 0.3s, color 0.3s;
 }
 
-/* MENÚ DESPLEGABLE */
+nav > ul > li > a:hover {
+  background: rgba(255,255,255,0.5);
+  color: #222;
+}
+
+/* Menú desplegable */
 nav ul li ul {
   display: none;
   position: absolute;
-  background: var(--lila);
+  top: 110%;
+  left: 0;
+  background: white;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  min-width: 130px;
+  z-index: 200;
 }
 
 nav ul li:hover ul {
@@ -52,108 +108,309 @@ nav ul li:hover ul {
 
 nav ul li ul li {
   display: block;
+  margin: 4px 0;
 }
 
-/* SECCIONES */
-main {
-  padding: 20px;
+nav ul li ul li a {
+  display: block;
+  padding: 6px 10px;
+  border-radius: 10px;
+  color: var(--texto-oscuro);
 }
+
+nav ul li ul li a:hover {
+  background: var(--lila);
+}
+
+/* ============================================
+   MAIN
+   ============================================ */
+
+main {
+  max-width: 960px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* ============================================
+   SECCIONES
+   ============================================ */
 
 section {
   background: white;
-  padding: 20px;
-  border-radius: 15px;
-  margin-bottom: 20px;
+  padding: 30px;
+  border-radius: var(--radio);
+  margin-bottom: 25px;
+  box-shadow: var(--sombra);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   text-align: center;
 }
 
-/* GALERÍA */
+section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(200, 100, 150, 0.2);
+}
+
+section h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--texto-oscuro);
+  margin-bottom: 12px;
+}
+
+section p {
+  font-size: 1rem;
+  color: var(--texto);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+
+.hero {
+  display: flex;
+  gap: 20px;
+  text-align: left;
+}
+
+.hero-texto,
+.hero-extra {
+  flex: 1;
+  padding: 25px;
+  border-radius: var(--radio);
+}
+
+.hero-texto h2 {
+  font-size: 1.8rem;
+  color: var(--texto-oscuro);
+  margin-bottom: 10px;
+}
+
+.hero-extra {
+  background: linear-gradient(135deg, var(--lila), #f3eeff);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.hero-extra h3 {
+  font-size: 1.2rem;
+  color: var(--texto-oscuro);
+}
+
+.firma {
+  font-size: 0.85rem;
+  color: var(--texto);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+/* ============================================
+   BOTONES
+   ============================================ */
+
+.btn {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 11px 24px;
+  background: linear-gradient(135deg, var(--lila), var(--rosado));
+  border-radius: 25px;
+  text-decoration: none;
+  color: #444;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 3px 10px rgba(200, 100, 150, 0.2);
+}
+
+.btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 6px 18px rgba(200, 100, 150, 0.35);
+}
+
+/* ============================================
+   ADOPCIÓN
+   ============================================ */
+
+.seccion-adopcion {
+  text-align: left;
+}
+
+.adopcion {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.adopcion-galeria {
+  flex: 2;
+}
+
+.adopcion-galeria h2 {
+  margin-bottom: 16px;
+}
+
+/* ============================================
+   GALERÍA
+   ============================================ */
+
 .galeria {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 15px;
 }
 
-/* TARJETA */
 .card-mascota {
-  width: 320px;
+  width: 300px;
+  padding: 18px;
+  border-radius: var(--radio);
   background: white;
-  padding: 15px;
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: var(--sombra);
+  text-align: center;
+  transition: transform 0.25s;
+}
+
+.card-mascota:hover {
+  transform: translateY(-4px);
 }
 
 .card-mascota img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 12px;
+  margin-bottom: 12px;
 }
 
-/* BOTONES */
-button {
-  background: var(--lila);
+.card-mascota h3 {
+  font-size: 1.1rem;
+  color: var(--texto-oscuro);
+  margin-bottom: 5px;
+}
+
+/* ============================================
+   BOTONES FLECHA
+   ============================================ */
+
+.flecha {
+  background: white;
   border: none;
-  padding: 10px;
+  font-size: 22px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
+  box-shadow: var(--sombra);
   cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  flex-shrink: 0;
 }
 
-button:hover {
+.flecha:hover {
   background: var(--rosado);
+  transform: scale(1.1);
 }
 
-.btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  background: var(--lila);
-  color: #444;
-  text-decoration: none;
-  border-radius: 20px;
+/* ============================================
+   FILTROS
+   ============================================ */
+
+.filtros {
+  flex: 1;
+  background: linear-gradient(160deg, var(--lila), #f3eeff);
+  padding: 22px;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  text-align: left;
 }
 
-.btn:hover {
-  background: var(--rosado);
+.filtros h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--texto-oscuro);
+  margin-bottom: 12px;
 }
 
-/* CARDS */
+.filtros label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--texto-oscuro);
+}
+
+.filtros select {
+  width: 100%;
+  padding: 9px 12px;
+  margin-top: 5px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: white;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.9rem;
+  color: var(--texto);
+  cursor: pointer;
+  transition: border 0.2s;
+}
+
+.filtros select:focus {
+  outline: none;
+  border-color: var(--lila-oscuro);
+}
+
+.logo-filtro {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  margin: 20px auto 0;
+  object-fit: cover;
+}
+
+/* ============================================
+   HISTORIA
+   ============================================ */
+
+.historia {
+  background: linear-gradient(135deg, #fff0f8, #fce8ff);
+}
+
+/* ============================================
+   CLUB
+   ============================================ */
+
+.club {
+  background: linear-gradient(135deg, var(--lila), #eee0ff);
+}
+
+/* ============================================
+   CARDS DE AYUDA
+   ============================================ */
+
 .cards {
   display: flex;
   gap: 15px;
   justify-content: center;
   flex-wrap: wrap;
-}
-
-.cards article {
-  width: 200px;
-  background: var(--blanco);
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-/* FOOTER */
-footer {
-  background: var(--rosado);
-  text-align: center;
-  padding: 15px;
-}
-.filtros label {
-  display: block;
   margin-top: 10px;
-  font-weight: bold;
 }
 
-.filtros select {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border-radius: 10px;
-  border: none;
+.card-ayuda {
+  width: 200px;
+  padding: 20px 15px;
+  border-radius: var(--radio);
   background: white;
-  font-family: 'Quicksand';
+  box-shadow: var(--sombra);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.card-ayuda:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 22px rgba(200, 100, 150, 0.25);
 }
 
 .card-link {
@@ -162,42 +419,27 @@ footer {
   display: block;
 }
 
-.card-ayuda {
-  transition: 0.3s;
-  cursor: pointer;
+.card-ayuda h3 {
+  font-size: 1.1rem;
+  color: var(--texto-oscuro);
+  margin-bottom: 8px;
 }
 
-.card-ayuda:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+.card-ayuda p {
+  font-size: 0.88rem;
+  color: var(--texto);
 }
 
-.logo-filtro {
-  width: 100%;
-  max-width: 300px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 15px;
-  display: block;
-  margin: 0 auto 10px;
-}
+/* ============================================
+   FOOTER
+   ============================================ */
 
-.flecha {
-  background: white;
-  border: none;
-  font-size: 24px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.flecha:hover {
-  background: var(--rosado);
-  transform: scale(1.1);
-}
-button, .btn {
-  cursor: pointer;
+footer {
+  background: linear-gradient(135deg, var(--rosado), var(--lila));
+  text-align: center;
+  padding: 18px;
+  font-weight: 600;
+  color: var(--texto-oscuro);
+  font-size: 0.95rem;
+  margin-top: 10px;
 }
