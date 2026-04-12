@@ -61,6 +61,7 @@
           </div>
           <button onclick="siguiente()" class="flecha">❯</button>
         </div>
+        <div id="puntos" class="puntos"></div>
       </div>
 
       <div class="filtros">
@@ -188,11 +189,34 @@ const mascotas = [
 ];
 
 let index = 0;
+let autoAvance = setInterval(siguiente, 4000);
 
-function mostrarMascota() {
-  document.getElementById("imagen").src = mascotas[index].img;
-  document.getElementById("nombre").textContent = mascotas[index].nombre;
-  document.getElementById("descripcion").textContent = mascotas[index].desc;
+function mostrarMascota(animacion = true) {
+  const imagen = document.getElementById("imagen");
+  const nombre = document.getElementById("nombre");
+  const descripcion = document.getElementById("descripcion");
+
+  if (animacion) {
+    imagen.style.opacity = "0";
+    nombre.style.opacity = "0";
+    descripcion.style.opacity = "0";
+
+    setTimeout(() => {
+      imagen.src = mascotas[index].img;
+      nombre.textContent = mascotas[index].nombre;
+      descripcion.textContent = mascotas[index].desc;
+
+      imagen.style.opacity = "1";
+      nombre.style.opacity = "1";
+      descripcion.style.opacity = "1";
+    }, 300);
+  } else {
+    imagen.src = mascotas[index].img;
+    nombre.textContent = mascotas[index].nombre;
+    descripcion.textContent = mascotas[index].desc;
+  }
+
+  actualizarPuntos();
 }
 
 function siguiente() {
@@ -205,16 +229,37 @@ function anterior() {
   mostrarMascota();
 }
 
-
-function filtrarMascotas() {
-  const especie = document.getElementById("filtro-especie").value;
-  const edad = document.getElementById("filtro-edad").value;
-  alert(`Buscando: ${especie} - ${edad}`);
-  // Aquí luego conectarás con la base de datos real
+function irA(i) {
+  index = i;
+  reiniciarAutoAvance();
+  mostrarMascota();
 }
 
+function reiniciarAutoAvance() {
+  clearInterval(autoAvance);
+  autoAvance = setInterval(siguiente, 4000);
+}
 
-mostrarMascota();
+function actualizarPuntos() {
+  const puntos = document.querySelectorAll(".punto");
+  puntos.forEach((p, i) => {
+    p.classList.toggle("activo", i === index);
+  });
+}
+
+function crearPuntos() {
+  const contenedor = document.getElementById("puntos");
+  mascotas.forEach((_, i) => {
+    const punto = document.createElement("span");
+    punto.classList.add("punto");
+    if (i === 0) punto.classList.add("activo");
+    punto.onclick = () => irA(i);
+    contenedor.appendChild(punto);
+  });
+}
+
+crearPuntos();
+mostrarMascota(false);
 </script>
 
 </body>
