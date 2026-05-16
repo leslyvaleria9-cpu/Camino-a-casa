@@ -1,6 +1,7 @@
 <!-- Página desarrollada con apoyo de IA (ChatGPT y Claude) para estructura y estilos -->
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,273 +12,292 @@
 
 <body>
 
-<header>
-  <h1>Camino a Casa 🐾</h1>
-  <nav>
-    <ul>
-      <li><a href="#">Inicio</a></li>
-      <li>
-        <a href="#">Adopción ▾</a>
-        <ul>
-          <li><a href="#">🐕 Perros</a></li>
-          <li><a href="#">🐱 Gatos</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Ayuda</a></li>
-      <li><a href="#">Contacto</a></li>
-    </ul>
-  </nav>
-</header>
-
-<main>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-texto">
-      <h2>Encuentra a tu mejor amigo 💖</h2>
-      <p>Adopta, ama y cambia una vida.</p>
-      <a href="#adopcion" class="btn">Ver mascotas</a>
+  <header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 40px;">
+    <div class="brand" style="display: flex; align-items: center; gap: 15px;">
+      <img src="img/logo.png" alt="Logo Camino a Casa" style="height: 80px; border-radius: 8px; mix-blend-mode: multiply;">
+      <h1 style="margin: 0; font-size: 2rem;">Camino a Casa 🐾</h1>
     </div>
-    <div class="hero-extra">
-      <h3>🐾 Historias reales</h3>
-      <p>"Adoptar cambió mi vida y la de mi Moka 💕"</p>
-      <p class="firma">— Lesly, fundadora</p>
-    </div>
-  </section>
+    <nav>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li>
+          <a href="#">Adopción ▾</a>
+          <ul>
+            <li><a href="#">🐕 Perros</a></li>
+            <li><a href="#">🐱 Gatos</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Ayuda</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- ADOPCIÓN -->
-  <section id="adopcion" class="seccion-adopcion">
-    <div class="adopcion">
+  <main>
 
-      <div class="adopcion-galeria">
-        <h2>Mascotas en adopción 🐾</h2>
-        <div class="galeria">
-          <button onclick="anterior()" class="flecha">❮</button>
-          <div class="card-mascota">
-            <img id="imagen" alt="Mascota en adopción">
-            <h3 id="nombre"></h3>
-            <p id="descripcion"></p>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-texto">
+        <h2>Encuentra a tu mejor amigo 💖</h2>
+        <p>Adopta, ama y cambia una vida.</p>
+        <a href="#adopcion" class="btn">Ver mascotas</a>
+      </div>
+      <div class="hero-extra">
+        <h3>🐾 Historias reales</h3>
+        <p>"Adoptar cambió mi vida y la de mi Moka 💕"</p>
+        <p class="firma">— Lesly, fundadora</p>
+      </div>
+    </section>
+
+    <!-- ADOPCIÓN -->
+    <section id="adopcion" class="seccion-adopcion">
+      <div class="adopcion">
+
+        <div class="adopcion-galeria" style="width: 100%;">
+          <h2 style="text-align: center; width: 100%; margin-bottom: 20px;">Mascotas en adopción 🐾</h2>
+          <div class="galeria">
+            <button onclick="anterior()" class="flecha">❮</button>
+            <div class="card-mascota" style="max-width: 500px;">
+              <img id="imagen" alt="Mascota en adopción" style="height: 350px;">
+              <h3 id="nombre"></h3>
+              <p id="descripcion"></p>
+            </div>
+            <button onclick="siguiente()" class="flecha">❯</button>
           </div>
-          <button onclick="siguiente()" class="flecha">❯</button>
+          <div id="puntos" class="puntos"></div>
         </div>
-        <div id="puntos" class="puntos"></div>
+
+      </div>
+    </section>
+
+    <!-- Formulario de adopcion-->
+    <section class="club">
+      <h2>Camino a la Adopción 🐾</h2>
+      <p>Para continuar con el proceso de adopción, debes completar tu perfil y antecedentes de adoptante.</p>
+      <a href="adoptantes/index.html" class="btn">Camino a la Adopción</a>
+    </section>
+
+
+    <!-- HOGAR TRANSITORIO -->
+    <section>
+      <h2>Hogar transitorio 🏡🐾</h2>
+      <p>Sé parte de nuestro programa de hogar transitorio. Puedes cuidar temporalmente a una mascota mientras encuentra
+        su familia definitiva 💕</p>
+      <a href="#" class="btn" onclick="event.preventDefault()" style="display: inline-block;">
+        Quiero ayudar
+        <span style="display: block; font-size: 0.75rem; font-weight: normal; margin-top: 0.2rem; opacity: 0.9;">✨ Muy
+          pronto disponible!</span>
+      </a>
+    </section>
+
+    <!-- AYUDA -->
+    <section>
+      <h2>Formas de ayudar 🤝</h2>
+      <div class="cards">
+        <article class="card-ayuda">
+          <a href="#" class="card-link" onclick="event.preventDefault()">
+            <h3>💰 Donar</h3>
+            <p>Apoya con aportes.</p>
+            <span style="display:block; font-size: 0.85rem; font-weight: bold; color: #e83e8c; margin-top: 0.5rem;">✨
+              Muy pronto disponible!</span>
+          </a>
+        </article>
+        <article class="card-ayuda">
+          <a href="#" class="card-link" onclick="event.preventDefault()">
+            <h3>🐕 Voluntariado</h3>
+            <p>Ayuda directamente.</p>
+            <span style="display:block; font-size: 0.85rem; font-weight: bold; color: #e83e8c; margin-top: 0.5rem;">✨
+              Muy pronto disponible!</span>
+          </a>
+        </article>
+        <article class="card-ayuda">
+          <a href="#" class="card-link" onclick="event.preventDefault()">
+            <h3>🍖 Alimentos</h3>
+            <p>Dona comida, nuestros michis y lomitos te lo agradecerán.</p>
+            <span style="display:block; font-size: 0.85rem; font-weight: bold; color: #e83e8c; margin-top: 0.5rem;">✨
+              Muy pronto disponible!</span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- HISTORIA -->
+    <section class="historia">
+      <h2>Mi historia con Moka 🐾</h2>
+      <p>
+        Este proyecto nació gracias a mi perrita Moka 💕
+        Ella cambió mi vida completamente, y me inspiró a ayudar a otros animales
+        a encontrar un hogar lleno de amor.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-contenido">
+      <div class="footer-seccion">
+        <h4>Camino a Casa 🐾</h4>
+        <p>Conectando corazones con patitas desde 2026.</p>
       </div>
 
-      <div class="filtros">
-        <h3>Filtrar 🐾</h3>
-        <label>Especie:</label>
-        <select id="filtro-especie">
-          <option>Todos</option>
-          <option>Perros</option>
-          <option>Gatos</option>
-        </select>
-        <label>Edad:</label>
-        <select id="filtro-edad">
-          <option>Todas</option>
-          <option>Cachorros</option>
-          <option>Adultos</option>
-          <option>Senior</option>
-        </select>
-        <button class="btn-buscar" onclick="filtrarMascotas()">🔍 Buscar</button>
-        <img src="img/logo.png" class="logo-filtro" alt="Logo Camino a Casa">
+      <div class="footer-seccion">
+        <h4>Links rápidos</h4>
+        <a href="#">Inicio</a>
+        <a href="#">Adopción</a>
+        <a href="#">Ayuda</a>
+        <a href="#">Contacto</a>
       </div>
 
-    </div>
-  </section>
+      <div class="footer-seccion">
+        <h4>Contacto</h4>
+        <p>📧 hola@caminoacasa.cl</p>
+        <p>📍 Santiago, Chile</p>
+      </div>
 
-  <!-- HISTORIA -->
-  <section class="historia">
-    <h2>Mi historia con Moka 🐾</h2>
-    <p>
-      Este proyecto nació gracias a mi perrita Moka 💕
-      Ella cambió mi vida completamente, y me inspiró a ayudar a otros animales
-      a encontrar un hogar lleno de amor.
-    </p>
-  </section>
-
-  <!-- Formulario de adopcion-->
-  <section class="club">
-    <h2>Camino a la Adopción 🐾</h2>
-    <p>Para continuar con el proceso de adopción, debes completar tu perfil y antecedentes de adoptante.</p>
-    <a href="adoptantes/index.html" class="btn">Camino a la Adopción</a>
-  </section>
-
-
-  <!-- HOGAR TRANSITORIO -->
-  <section>
-    <h2>Hogar transitorio 🏡🐾</h2>
-    <p>Sé parte de nuestro programa de hogar transitorio. Puedes cuidar temporalmente a una mascota mientras encuentra su familia definitiva 💕</p>
-    <a href="#" class="btn">Quiero ayudar</a>
-  </section>
-
-  <!-- AYUDA -->
-  <section>
-    <h2>Formas de ayudar 🤝</h2>
-    <div class="cards">
-      <article class="card-ayuda">
-        <a href="#" class="card-link">
-          <h3>💰 Donar</h3>
-          <p>Apoya con aportes.</p>
-        </a>
-      </article>
-      <article class="card-ayuda">
-        <a href="#" class="card-link">
-          <h3>🐕 Voluntariado</h3>
-          <p>Ayuda directamente.</p>
-        </a>
-      </article>
-      <article class="card-ayuda">
-        <a href="#" class="card-link">
-          <h3>🍖 Alimentos</h3>
-          <p>Dona comida, nuestros michis y lomitos te lo agradecerán.</p>
-        </a>
-      </article>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="footer-contenido">
-    <div class="footer-seccion">
-      <h4>Camino a Casa 🐾</h4>
-      <p>Conectando corazones con patitas desde 2026.</p>
+      <div class="footer-seccion">
+        <h4>Redes sociales</h4>
+        <a href="#">📸 Instagram</a>
+        <a href="#">🎵 TikTok</a>
+        <a href="#">📘 Facebook</a>
+      </div>
     </div>
 
-    <div class="footer-seccion">
-      <h4>Links rápidos</h4>
-      <a href="#">Inicio</a>
-      <a href="#">Adopción</a>
-      <a href="#">Ayuda</a>
-      <a href="#">Contacto</a>
-    </div>
+    <p class="footer-copy">© 2026 Camino a Casa — Hecho con 💖</p>
+  </footer>
 
-    <div class="footer-seccion">
-      <h4>Contacto</h4>
-      <p>📧 hola@caminoacasa.cl</p>
-      <p>📍 Santiago, Chile</p>
-    </div>
+  <script>
+    const mascotas = [
+      {
+        img: "img/Yiya.jpeg",
+        nombre: "Yiya",
+        desc: "Cariñosa y juguetona 🐱"
+      },
+      {
+        img: "img/Bigote.jpeg",
+        nombre: "Bigote",
+        desc: "Le gustan los mimos 🐱"
+      },
+      {
+        img: "img/Mico.jpeg",
+        nombre: "Mico",
+        desc: "Asustadizo...necesita mucho amor🐕"
+      },
+      {
+        img: "img/4_mosqueteros.jpeg",
+        nombre: "4 mosqueteros",
+        desc: "Hermanos valientes 🐱"
+      },
+      {
+        img: "img/Vigilante.jpeg",
+        nombre: "Vigilante",
+        desc: "Cuidador innato 🐱"
+      },
+      {
+        img: "img/pantro.jpeg",
+        nombre: "Pantro",
+        desc: "Juguetón y cariñoso 🐱"
 
-    <div class="footer-seccion">
-      <h4>Redes sociales</h4>
-      <a href="#">📸 Instagram</a>
-      <a href="#">🎵 TikTok</a>
-      <a href="#">📘 Facebook</a>
-    </div>
-  </div>
+      },
+      {
+        img: "img/Polo.jpeg",
+        nombre: "Polo",
+        desc: "Tranquilo y dormilón 🐕"
+      },
+      {
+        img: "img/Lana y Pluma.jpeg",
+        nombre: "Lana y Pluma",
+        desc: "Las mimadas de la casa 🐱"
+      },
+    ];
 
-  <p class="footer-copy">© 2026 Camino a Casa — Hecho con 💖</p>
-</footer>
+    let index = 0;
+    let autoAvance = setInterval(siguiente, 4000);
 
-<script>
-const mascotas = [
-  {
-    img: "img/Yiya.jpeg",
-    nombre: "Yiya",
-    desc: "Cariñosa y juguetona 🐱"
-  },
-  {
-    img: "img/Bigote.jpeg",
-    nombre: "Bigote",
-    desc: "Le gustan los mimos 🐱"
-  },
-  {
-    img: "img/Mico.jpeg",
-    nombre: "Mico",
-    desc: "Asustadizo...necesita mucho amor🐕"
-  },
-  {
-    img: "img/4_mosqueteros.jpeg",
-    nombre: "4 mosqueteros",
-    desc: "Hermanos valientes 🐱"
-  },
-  {
-    img: "img/Vigilante.jpeg",
-    nombre: "Vigilante",
-    desc: "Cuidador innato 🐱"
-  },
-];
+    function mostrarMascota(animacion = true) {
+      const imagen = document.getElementById("imagen");
+      const nombre = document.getElementById("nombre");
+      const descripcion = document.getElementById("descripcion");
 
-let index = 0;
-let autoAvance = setInterval(siguiente, 4000);
+      const profiles = JSON.parse(localStorage.getItem("adopterProfiles") || "[]");
+      const adoptedPets = profiles
+        .filter(p => p.estado === "Aprobado" && p.mascotaSolicitada)
+        .map(p => p.mascotaSolicitada.name);
 
-function mostrarMascota(animacion = true) {
-  const imagen = document.getElementById("imagen");
-  const nombre = document.getElementById("nombre");
-  const descripcion = document.getElementById("descripcion");
+      const isAdopted = adoptedPets.includes(mascotas[index].nombre);
+      const aviso = isAdopted ? '<br><span style="color: #e83e8c; font-weight: bold; display: block; margin-top: 10px;">🎉 ¡Ya llego a su feliz casa!</span>' : '';
 
-  if (animacion) {
-    imagen.style.opacity = "0";
-    nombre.style.opacity = "0";
-    descripcion.style.opacity = "0";
+      if (animacion) {
+        imagen.style.opacity = "0";
+        nombre.style.opacity = "0";
+        descripcion.style.opacity = "0";
 
-    setTimeout(() => {
-      imagen.src = mascotas[index].img;
-      nombre.textContent = mascotas[index].nombre;
-      descripcion.textContent = mascotas[index].desc;
+        setTimeout(() => {
+          imagen.src = mascotas[index].img;
+          nombre.textContent = mascotas[index].nombre;
+          descripcion.innerHTML = mascotas[index].desc + aviso;
 
-      imagen.style.opacity = "1";
-      nombre.style.opacity = "1";
-      descripcion.style.opacity = "1";
-    }, 300);
-  } else {
-    imagen.src = mascotas[index].img;
-    nombre.textContent = mascotas[index].nombre;
-    descripcion.textContent = mascotas[index].desc;
-  }
+          imagen.style.opacity = "1";
+          nombre.style.opacity = "1";
+          descripcion.style.opacity = "1";
+        }, 300);
+      } else {
+        imagen.src = mascotas[index].img;
+        nombre.textContent = mascotas[index].nombre;
+        descripcion.innerHTML = mascotas[index].desc + aviso;
+      }
 
-  actualizarPuntos();
-}
+      actualizarPuntos();
+    }
 
-function siguiente() {
-  index = (index + 1) % mascotas.length;
-  mostrarMascota();
-}
+    function siguiente() {
+      index = (index + 1) % mascotas.length;
+      mostrarMascota();
+    }
 
-function anterior() {
-  index = (index - 1 + mascotas.length) % mascotas.length;
-  mostrarMascota();
-}
+    function anterior() {
+      index = (index - 1 + mascotas.length) % mascotas.length;
+      mostrarMascota();
+    }
 
-function irA(i) {
-  index = i;
-  reiniciarAutoAvance();
-  mostrarMascota();
-}
+    function irA(i) {
+      index = i;
+      reiniciarAutoAvance();
+      mostrarMascota();
+    }
 
-function reiniciarAutoAvance() {
-  clearInterval(autoAvance);
-  autoAvance = setInterval(siguiente, 4000);
-}
+    function reiniciarAutoAvance() {
+      clearInterval(autoAvance);
+      autoAvance = setInterval(siguiente, 4000);
+    }
 
-function actualizarPuntos() {
-  const puntos = document.querySelectorAll(".punto");
-  puntos.forEach((p, i) => {
-    p.classList.toggle("activo", i === index);
-  });
-}
+    function actualizarPuntos() {
+      const puntos = document.querySelectorAll(".punto");
+      puntos.forEach((p, i) => {
+        p.classList.toggle("activo", i === index);
+      });
+    }
 
-function crearPuntos() {
-  const contenedor = document.getElementById("puntos");
-  mascotas.forEach((_, i) => {
-    const punto = document.createElement("span");
-    punto.classList.add("punto");
-    if (i === 0) punto.classList.add("activo");
-    punto.onclick = () => irA(i);
-    contenedor.appendChild(punto);
-  });
-}
+    function crearPuntos() {
+      const contenedor = document.getElementById("puntos");
+      mascotas.forEach((_, i) => {
+        const punto = document.createElement("span");
+        punto.classList.add("punto");
+        if (i === 0) punto.classList.add("activo");
+        punto.onclick = () => irA(i);
+        contenedor.appendChild(punto);
+      });
+    }
 
-crearPuntos();
-mostrarMascota(false);
+    crearPuntos();
+    mostrarMascota(false);
 
 
 
 
 
-</script>
+  </script>
 
 
 </body>
-</html>
 
+</html>

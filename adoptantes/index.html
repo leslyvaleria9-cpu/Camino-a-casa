@@ -16,7 +16,8 @@
 <body>
   <header class="app-header">
     <div class="header-content">
-      <span class="material-symbols-rounded logo-icon">pets</span>
+      <img src="../img/logo.png" alt="Logo Camino a Casa"
+        style="height: 60px; border-radius: 8px; mix-blend-mode: multiply; margin-right: 10px;">
       <h1>Camino a Casa</h1>
       <button id="btn-close-page" class="btn btn-secondary"
         style="margin-left: auto; display: flex; align-items: center; gap: 0.5rem;"
@@ -47,7 +48,10 @@
           <button id="btn-view-details" class="btn btn-secondary hidden">Ver mis datos</button>
           <button id="btn-reset-data" class="btn btn-text">Borrar Datos</button>
           <hr style="width: 100%; border: none; border-top: 1px solid var(--clr-border); margin: 0.5rem 0;">
-          <button id="btn-go-admin" class="btn btn-text" style="color: var(--clr-primary); font-weight: 600;"><span class="material-symbols-rounded" style="font-size: 1.2rem; vertical-align: middle;">admin_panel_settings</span> Modo Administradora</button>
+          <button id="btn-go-admin" class="btn btn-text" style="color: var(--clr-primary); font-weight: 600;"><span
+              class="material-symbols-rounded"
+              style="font-size: 1.2rem; vertical-align: middle;">admin_panel_settings</span> Modo
+            Administradora</button>
         </div>
       </div>
     </section>
@@ -89,26 +93,39 @@
               <input type="tel" id="reg-phone" required placeholder="9 1234 5678">
             </div>
             <span class="error-msg"></span>
-          </div>
-          <div class="form-group">
-            <label for="reg-address">Dirección</label>
-            <input type="text" id="reg-address" required placeholder="Calle 123, Comuna">
-            <span class="error-msg"></span>
-          </div>
-          <div class="form-group">
-            <label for="reg-housing">Tipo de Vivienda</label>
-            <select id="reg-housing" required>
-              <option value="">Selecciona una opción</option>
-              <option value="casa">Casa con patio</option>
-              <option value="departamento">Departamento</option>
-              <option value="parcela">Parcela</option>
-            </select>
-            <span class="error-msg"></span>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Siguiente <span
-                class="material-symbols-rounded">arrow_forward</span></button>
-          </div>
+            <div class="form-group">
+              <label for="reg-region">Región</label>
+              <select id="reg-region" required>
+                <option value="">Selecciona tu región</option>
+              </select>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label for="reg-commune">Comuna</label>
+              <select id="reg-commune" required disabled>
+                <option value="">Selecciona primero una región</option>
+              </select>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label for="reg-address">Dirección</label>
+              <input type="text" id="reg-address" required placeholder="Calle 123">
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label for="reg-housing">Tipo de Vivienda</label>
+              <select id="reg-housing" required>
+                <option value="">Selecciona una opción</option>
+                <option value="casa">Casa con patio</option>
+                <option value="departamento">Departamento</option>
+                <option value="parcela">Parcela</option>
+              </select>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Siguiente <span
+                  class="material-symbols-rounded">arrow_forward</span></button>
+            </div>
         </form>
       </div>
     </section>
@@ -231,7 +248,14 @@
         <button class="btn-icon btn-back-admin" aria-label="Volver" title="Volver al inicio"><span
             class="material-symbols-rounded">arrow_back</span></button>
         <h2>Panel de Administradora</h2>
-        <p class="subtitle">Gestión de Solicitudes de Adopción</p>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <p class="subtitle" style="margin: 0;">Gestión de Solicitudes de Adopción</p>
+          <button id="btn-factory-reset" class="btn btn-text"
+            style="color: #d32f2f; font-weight: bold; padding: 0.5rem; background: #ffebee; border-radius: 8px;">
+            <span class="material-symbols-rounded" style="vertical-align: middle;">delete_forever</span> Reiniciar
+            Sistema
+          </button>
+        </div>
         <div class="requests-list" id="admin-requests-list">
           <!-- Injected via JS -->
         </div>
@@ -252,6 +276,7 @@
 
   </main>
 
+  <script src="./js/chile.js"></script>
   <script src="./js/main.js"></script>
 </body>
 

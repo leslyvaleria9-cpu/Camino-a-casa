@@ -7,10 +7,10 @@ function validateRUT(rut) {
   // Limpiar puntos y guiones, y pasar a mayúscula
   let cleaned = rut.replace(/[\.\-]/g, '').toUpperCase();
   if (cleaned.length < 2) return false;
-  
-  const digv = cleaned.slice(-1); 
+
+  const digv = cleaned.slice(-1);
   const rutNum = cleaned.slice(0, -1);
-  
+
   return calculateRutDigit(rutNum) === digv;
 }
 
@@ -25,10 +25,10 @@ function calculateRutDigit(T) {
 function formatRUT(rut) {
   let cleaned = rut.replace(/[^0-9kK]/g, '').toUpperCase();
   if (cleaned.length < 2) return cleaned;
-  
+
   const dv = cleaned.slice(-1);
   let rutNum = cleaned.slice(0, -1);
-  
+
   // Format with dots
   let formatted = '';
   while (rutNum.length > 3) {
@@ -36,7 +36,7 @@ function formatRUT(rut) {
     rutNum = rutNum.slice(0, -3);
   }
   formatted = rutNum + formatted + '-' + dv;
-  
+
   return formatted;
 }
 
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const viewPets = document.getElementById("view-pets");
   const viewAdmin = document.getElementById("view-admin");
   const viewAdminDetail = document.getElementById("view-admin-detail");
-  
+
   let tempPersonalData = {};
 
   // -----------------------------
@@ -88,15 +88,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     input.addEventListener("input", () => {
-        clearError(input.id);
+      clearError(input.id);
     });
   });
 
   // Evento especial para dar formato al RUT
   const rutInput = document.getElementById("reg-rut");
-  if(rutInput) {
+  if (rutInput) {
     rutInput.addEventListener("blur", () => {
-      if(rutInput.value && validateRUT(rutInput.value)) {
+      if (rutInput.value && validateRUT(rutInput.value)) {
         rutInput.value = formatRUT(rutInput.value);
       }
     });
@@ -118,7 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const rawPhone = document.getElementById("reg-phone").value;
     const phone = `${countryCode} ${rawPhone}`;
     const name = document.getElementById("reg-name").value;
-    const address = document.getElementById("reg-address").value;
+    const region = document.getElementById("reg-region").value.trim();
+    const commune = document.getElementById("reg-commune").value.trim();
+    const address = document.getElementById("reg-address").value.trim();
     const housing = document.getElementById("reg-housing").value;
 
     let valid = true;
@@ -126,20 +128,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!validateRequired(name)) { showError("reg-name", "El nombre es obligatorio"); valid = false; }
     if (!validateRUT(rut)) { showError("reg-rut", "RUT inválido"); valid = false; } else { document.getElementById("reg-rut").value = formatRUT(rut); }
     if (!validateEmail(email)) { showError("reg-email", "Correo inválido"); valid = false; }
-    if (!validatePhone(rawPhone)) { showError("reg-phone", "Número inválido (mínimo 7 dígitos)"); valid = false; }
+    if (!validatePhone(rawPhone)) { showError("reg-phone", "Número inválido"); valid = false; }
+    if (!validateRequired(region)) { showError("reg-region", "La región es obligatoria"); valid = false; }
+    if (!validateRequired(commune)) { showError("reg-commune", "La comuna es obligatoria"); valid = false; }
     if (!validateRequired(address)) { showError("reg-address", "La dirección es obligatoria"); valid = false; }
     if (!validateRequired(housing)) { showError("reg-housing", "Selecciona un tipo de vivienda"); valid = false; }
 
     if (valid) {
-      tempPersonalData = { name, rut, email, phone, address, housing };
-      
+      tempPersonalData = { name, rut, email, phone, region, commune, address, housing };
+
       viewRegister.classList.remove("active");
       viewRegister.classList.add("hidden");
       viewVerify.classList.remove("hidden");
       viewVerify.classList.add("active");
       verifyPhoneDisplay.textContent = phone;
       // Generar código simulado aleatorio
-      simulatedCodeVal.textContent = Math.floor(1000 + Math.random() * 9000).toString(); 
+      simulatedCodeVal.textContent = Math.floor(1000 + Math.random() * 9000).toString();
     }
   });
 
@@ -192,9 +196,9 @@ document.addEventListener("DOMContentLoaded", () => {
     viewRegister.classList.remove("hidden");
     viewRegister.classList.add("active");
   });
-  
+
   const btnBack = document.querySelector(".btn-back");
-  if(btnBack) {
+  if (btnBack) {
     btnBack.addEventListener("click", () => {
       viewRegister.classList.remove("active");
       viewRegister.classList.add("hidden");
@@ -208,17 +212,17 @@ document.addEventListener("DOMContentLoaded", () => {
     btnViewDetails.addEventListener("click", () => {
       const p = loadProfile();
       if (!p) return;
-      
+
       // Llenar vista
       document.getElementById("details-personal").innerHTML = `
         <li><span class="label">Nombre</span><span class="value">${p.name || 'N/A'}</span></li>
         <li><span class="label">RUT</span><span class="value">${p.rut || 'N/A'}</span></li>
         <li><span class="label">Correo</span><span class="value">${p.email || 'N/A'}</span></li>
         <li><span class="label">Celular</span><span class="value">${p.phone || 'N/A'}</span></li>
-        <li><span class="label">Dirección</span><span class="value">${p.address || 'N/A'}</span></li>
+        <li><span class="label">Ubicación</span><span class="value">${p.address || ''}, ${p.commune || ''}, ${p.region || ''}</span></li>
         <li><span class="label">Vivienda</span><span class="value">${p.housing || 'N/A'}</span></li>
       `;
-      
+
       document.getElementById("details-background").innerHTML = `
         <li><span class="label">Experiencia</span><span class="value">${p.experience || 'N/A'}</span></li>
         <li><span class="label">Adopciones Previas</span><span class="value">${p.adoptions || 0}</span></li>
@@ -234,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const btnBackDetails = document.querySelector(".btn-back-details");
-  if(btnBackDetails) {
+  if (btnBackDetails) {
     btnBackDetails.addEventListener("click", () => {
       viewDetails.classList.remove("active");
       viewDetails.classList.add("hidden");
@@ -258,21 +262,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("btn-reset-data").addEventListener("click", () => {
-    const activeId = localStorage.getItem("activeProfileId");
-    if (activeId) {
-      let profiles = getAdopterProfiles();
-      profiles = profiles.filter(p => p.id !== activeId);
-      localStorage.setItem("adopterProfiles", JSON.stringify(profiles));
-      localStorage.removeItem("activeProfileId");
-    }
-    localStorage.removeItem("adopterProfile");
-    alert("Datos de perfil actual borrados");
+    localStorage.removeItem("activeProfileId");
+    document.getElementById("form-register").reset();
+    document.getElementById("form-profile").reset();
+    document.getElementById("form-verify").reset();
+    alert("Se ha reiniciado el formulario para un nuevo registro.");
     location.reload();
   });
 
   const btnClosePage = document.getElementById("btn-close-page");
   if (btnClosePage) {
     btnClosePage.addEventListener("click", () => {
+      localStorage.removeItem("activeProfileId");
+      document.getElementById("form-register").reset();
+      document.getElementById("form-profile").reset();
+      document.getElementById("form-verify").reset();
       window.location.href = "../index.html";
       setTimeout(() => window.close(), 100);
     });
@@ -332,6 +336,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Reiniciar Sistema (Factory Reset)
+  const btnFactoryReset = document.getElementById("btn-factory-reset");
+  if (btnFactoryReset) {
+    btnFactoryReset.addEventListener("click", () => {
+      if (confirm("⚠️ ¿Estás segura de que quieres borrar TODOS los datos (adoptantes y estados de mascotas)? Esta acción liberará a las mascotas y dejará el sistema desde cero.")) {
+        localStorage.clear();
+        alert("Sistema reiniciado desde cero. Las mascotas están disponibles nuevamente.");
+        location.reload();
+      }
+    });
+  }
+
   // -----------------------------
   // Visualizar archivos adjuntos
   // -----------------------------
@@ -385,7 +401,7 @@ function saveProfile(data) {
   let profiles = getAdopterProfiles();
   let activeId = localStorage.getItem("activeProfileId");
   let profileIndex = activeId ? profiles.findIndex(p => p.id === activeId) : -1;
-  
+
   const score = calculateRating(data);
   let estado = "Incompleto";
   if (score >= 4) estado = "Completo";
@@ -419,7 +435,7 @@ function loadProfile() {
 }
 
 function calculateRating(profile) {
-  if(!profile) return 0;
+  if (!profile) return 0;
   let score = 0;
   if (profile.adoptions > 0) score += 2;
   if (profile.experience !== "ninguna") score += 1;
@@ -442,7 +458,7 @@ function renderStars(score) {
 function updateProfileStatus(profile) {
   const badge = document.getElementById("profile-status-badge");
   const score = calculateRating(profile);
-  
+
   const btnViewDetails = document.getElementById("btn-view-details");
   const btnStartRegister = document.getElementById("btn-start-register");
   const btnChoosePet = document.getElementById("btn-choose-pet");
@@ -451,24 +467,24 @@ function updateProfileStatus(profile) {
     badge.textContent = "Incompleto";
     badge.dataset.state = "Incompleto";
     renderStars(0);
-    if(btnViewDetails) btnViewDetails.classList.add("hidden");
-    if(btnChoosePet) btnChoosePet.classList.add("hidden");
-    if(btnStartRegister) btnStartRegister.textContent = "Completar Perfil";
+    if (btnViewDetails) btnViewDetails.classList.add("hidden");
+    if (btnChoosePet) btnChoosePet.classList.add("hidden");
+    if (btnStartRegister) btnStartRegister.textContent = "Completar Perfil";
     return;
   }
-  
-  if(btnViewDetails) btnViewDetails.classList.remove("hidden");
-  if(btnStartRegister) btnStartRegister.textContent = "Actualizar Perfil";
-  
+
+  if (btnViewDetails) btnViewDetails.classList.remove("hidden");
+  if (btnStartRegister) btnStartRegister.textContent = "Actualizar Perfil";
+
   renderStars(score);
 
   badge.textContent = profile.estado;
   badge.dataset.state = profile.estado;
 
-  if (!profile.mascotaSolicitada && (profile.estado === "Completo" || profile.estado === "En revisión")) {
-    if(btnChoosePet) btnChoosePet.classList.remove("hidden");
+  if (!profile.mascotaSolicitada) {
+    if (btnChoosePet) btnChoosePet.classList.remove("hidden");
   } else {
-    if(btnChoosePet) btnChoosePet.classList.add("hidden");
+    if (btnChoosePet) btnChoosePet.classList.add("hidden");
   }
 }
 
@@ -497,33 +513,42 @@ function getAdoptionRequests() {
       },
       {
         id: "mock-2", name: "Carlos López", phone: "+54 9 11 2345 6789", rut: "22.222.222-2",
-        email: "carlos@example.com", estado: "Aprobado", mascotaSolicitada: mockPets[0],
+        email: "carlos@example.com", estado: "Rechazado", mascotaSolicitada: mockPets[0],
         date: new Date(Date.now() - 86400000).toISOString()
       }
     ];
     localStorage.setItem("adopterProfiles", JSON.stringify(mockProfiles));
-    return mockProfiles.filter(p => p.mascotaSolicitada);
+    return mockProfiles;
   }
-  return profiles.filter(p => p.mascotaSolicitada);
+  return profiles;
 }
 
 function renderPetsGrid() {
   const container = document.getElementById("pets-grid");
   if (!container) return;
-  
-  container.innerHTML = mockPets.map(pet => `
+
+  const profiles = getAdopterProfiles();
+  const adoptedPets = profiles
+    .filter(p => p.estado === "Aprobado" && p.mascotaSolicitada)
+    .map(p => p.mascotaSolicitada.name);
+
+  container.innerHTML = mockPets.map(pet => {
+    const isAdopted = adoptedPets.includes(pet.name);
+    return `
     <div class="pet-card">
       <img src="${pet.img}" alt="${pet.name}" class="pet-img">
       <div class="pet-info">
         <h3>${pet.name}</h3>
         <p>${pet.type}</p>
-        <button class="btn btn-secondary btn-adopt" onclick="requestAdoption(${pet.id})">Solicitar Adopción</button>
+        ${isAdopted
+        ? '<p style="color: var(--clr-primary); font-weight: bold; margin-top: 0.5rem; text-align: center;">🎉 ¡Ya llego a su feliz casa!</p>'
+        : `<button class="btn btn-secondary btn-adopt" onclick="requestAdoption(${pet.id})">Solicitar Adopción</button>`}
       </div>
     </div>
-  `).join("");
+  `}).join("");
 }
 
-window.requestAdoption = function(petId) {
+window.requestAdoption = function (petId) {
   const profile = loadProfile();
   if (!profile) {
     alert("Debes completar tu perfil primero.");
@@ -533,21 +558,21 @@ window.requestAdoption = function(petId) {
     alert(`Ya tienes una solicitud en proceso para ${profile.mascotaSolicitada.name}.`);
     return;
   }
-  
+
   const pet = mockPets.find(p => p.id === petId);
-  
+
   const profiles = getAdopterProfiles();
   const index = profiles.findIndex(p => p.id === profile.id);
-  
+
   if (index > -1) {
     profiles[index].mascotaSolicitada = pet;
     profiles[index].estado = "Pendiente";
     profiles[index].date = new Date().toISOString();
     localStorage.setItem("adopterProfiles", JSON.stringify(profiles));
-    
+
     alert(`¡Solicitud enviada para adoptar a ${pet.name}!`);
     updateProfileStatus(profiles[index]);
-    
+
     // Volver al dashboard
     document.getElementById("view-pets").classList.remove("active");
     document.getElementById("view-pets").classList.add("hidden");
@@ -559,46 +584,50 @@ window.requestAdoption = function(petId) {
 function renderAdminRequests() {
   const container = document.getElementById("admin-requests-list");
   if (!container) return;
-  
+
   const requests = getAdoptionRequests();
-  
+
   if (requests.length === 0) {
     container.innerHTML = "<p>No hay solicitudes pendientes.</p>";
     return;
   }
-  
+
   // Ordenar: pendientes primero, luego por fecha
   requests.sort((a, b) => {
     if (a.estado === "Pendiente" && b.estado !== "Pendiente") return -1;
     if (a.estado !== "Pendiente" && b.estado === "Pendiente") return 1;
-    return new Date(b.date) - new Date(a.date);
+    const dateA = a.date ? new Date(a.date) : new Date(0);
+    const dateB = b.date ? new Date(b.date) : new Date(0);
+    return dateB - dateA;
   });
-  
-  container.innerHTML = requests.map(req => `
+
+  container.innerHTML = requests.map(req => {
+    const petName = req.mascotaSolicitada ? req.mascotaSolicitada.name : "Aún sin solicitar";
+    return `
     <div class="request-card" style="cursor: pointer;" onclick="viewAdminRequestDetail('${req.id}')">
       <div class="req-info">
         <h3>${req.name} <span style="font-size: 0.9rem; font-weight: normal; color: var(--clr-text-light);">(${req.phone || 'Sin tel.'})</span></h3>
-        <p>Quiere adoptar a: <strong>${req.mascotaSolicitada.name}</strong></p>
-        <span class="req-status ${req.estado}">${req.estado}</span>
+        <p>Mascota: <strong>${petName}</strong></p>
+        <span class="req-status ${req.estado.replace(" ", "-")}">${req.estado}</span>
       </div>
       <div class="req-actions">
         <span class="material-symbols-rounded" style="color: var(--clr-text-light); font-size: 2rem;">chevron_right</span>
       </div>
     </div>
-  `).join("");
+  `}).join("");
 }
 
-window.viewAdminRequestDetail = function(profileId) {
+window.viewAdminRequestDetail = function (profileId) {
   const profiles = getAdopterProfiles();
   const profile = profiles.find(p => p.id === profileId);
   if (!profile) return;
-  
+
   const score = calculateRating(profile);
   let starsHtml = "";
   for (let i = 1; i <= 5; i++) {
     starsHtml += `<span class="material-symbols-rounded star ${i <= score ? 'active' : ''}" style="font-size: 1.5rem;">grade</span>`;
   }
-  
+
   const container = document.getElementById("admin-detail-content");
   container.innerHTML = `
     <div class="details-section">
@@ -608,7 +637,7 @@ window.viewAdminRequestDetail = function(profileId) {
         <li><span class="label">RUT</span><span class="value">${profile.rut}</span></li>
         <li><span class="label">Correo</span><span class="value">${profile.email}</span></li>
         <li><span class="label">Celular</span><span class="value">${profile.phone}</span></li>
-        <li><span class="label">Dirección</span><span class="value">${profile.address}</span></li>
+        <li><span class="label">Ubicación</span><span class="value">${profile.address || ''}, ${profile.commune || ''}, ${profile.region || ''}, ${profile.country || ''}</span></li>
         <li><span class="label">Vivienda</span><span class="value" style="text-transform: capitalize;">${profile.housing}</span></li>
       </ul>
     </div>
@@ -616,10 +645,10 @@ window.viewAdminRequestDetail = function(profileId) {
     <div class="details-section">
       <h3><span class="material-symbols-rounded">assignment</span> Antecedentes</h3>
       <ul class="details-list">
-        <li><span class="label">Experiencia</span><span class="value" style="text-transform: capitalize;">${profile.experience}</span></li>
+        <li><span class="label">Experiencia</span><span class="value" style="text-transform: capitalize;">${profile.experience || 'N/A'}</span></li>
         <li><span class="label">Adopciones Previas</span><span class="value">${profile.adoptions || 0}</span></li>
         <li><span class="label">Tiempo Disponible</span><span class="value">${profile.time || 0} hrs</span></li>
-        <li><span class="label">Motivación</span><span class="value">${profile.motivation}</span></li>
+        <li><span class="label">Motivación</span><span class="value">${profile.motivation || 'N/A'}</span></li>
       </ul>
       <div style="margin-top: 1.5rem; text-align: center;">
         <span class="label" style="display:block; margin-bottom: 0.5rem; font-weight: bold;">Calificación del Sistema</span>
@@ -627,13 +656,21 @@ window.viewAdminRequestDetail = function(profileId) {
       </div>
     </div>
     
+    ${profile.mascotaSolicitada ? `
     <div class="details-section" style="text-align: center; background: #fff0f3;">
       <h3><span class="material-symbols-rounded">pets</span> Mascota Solicitada</h3>
       <p style="font-size: 1.4rem; font-weight: 700; color: var(--clr-primary-light);">${profile.mascotaSolicitada.name}</p>
       <span class="req-status ${profile.estado}" style="display:inline-block; margin-top:0.5rem; padding: 0.25rem 0.75rem; border-radius: 999px; background: white;">Estado: ${profile.estado}</span>
     </div>
+    ` : `
+    <div class="details-section" style="text-align: center; background: #f9f9f9;">
+      <h3><span class="material-symbols-rounded">pets</span> Mascota Solicitada</h3>
+      <p style="font-size: 1.2rem; font-weight: 500; color: var(--clr-text-light);">Aún no ha solicitado mascota</p>
+      <span class="req-status ${profile.estado}" style="display:inline-block; margin-top:0.5rem; padding: 0.25rem 0.75rem; border-radius: 999px; background: white;">Estado: ${profile.estado}</span>
+    </div>
+    `}
     
-    ${profile.estado === "Pendiente" ? `
+    ${(profile.estado === "Pendiente" && profile.mascotaSolicitada) ? `
       <div class="form-actions" style="justify-content: center; gap: 1rem; margin-top: 2rem;">
         <button class="btn btn-approve" onclick="updateRequestStatus('${profile.id}', 'Aprobado')" style="font-size: 1.1rem; padding: 0.75rem 2rem;">
           <span class="material-symbols-rounded">check</span> Aprobar
@@ -644,27 +681,28 @@ window.viewAdminRequestDetail = function(profileId) {
       </div>
     ` : ''}
   `;
-  
+
   document.getElementById("view-admin").classList.remove("active");
   document.getElementById("view-admin").classList.add("hidden");
   document.getElementById("view-admin-detail").classList.remove("hidden");
   document.getElementById("view-admin-detail").classList.add("active");
 };
 
-window.updateRequestStatus = function(profileId, newStatus) {
+window.updateRequestStatus = function (profileId, newStatus) {
   const profiles = getAdopterProfiles();
   const index = profiles.findIndex(p => p.id === profileId);
   if (index > -1) {
     profiles[index].estado = newStatus;
     localStorage.setItem("adopterProfiles", JSON.stringify(profiles));
+
     renderAdminRequests(); // Re-render
-    
+
     // Enviar correo
     const profile = profiles[index];
     const petName = profile.mascotaSolicitada.name;
     let subject = "";
     let body = "";
-    
+
     if (newStatus === "Aprobado") {
       subject = encodeURIComponent("¡Felicidades! Tu solicitud de adopción ha sido aprobada");
       body = encodeURIComponent(`¡Felicidades ${profile.name}!\n\nEl proceso de adopción de ${petName} ha sido aprobado.\nNos pondremos en contacto contigo pronto para los siguientes pasos.\n\nSaludos,\nEquipo Camino a Casa`);
@@ -672,15 +710,15 @@ window.updateRequestStatus = function(profileId, newStatus) {
       subject = encodeURIComponent("Actualización sobre tu solicitud de adopción");
       body = encodeURIComponent(`Hola ${profile.name},\n\nLo siento, en esta ocasión no calificas para la adopción de ${petName}.\nPara más información o dudas, puedes responder a este correo.\n\nSaludos,\nEquipo Camino a Casa`);
     }
-    
+
     window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
-    
+
     // Volver a la lista
     document.getElementById("view-admin-detail").classList.remove("active");
     document.getElementById("view-admin-detail").classList.add("hidden");
     document.getElementById("view-admin").classList.remove("hidden");
     document.getElementById("view-admin").classList.add("active");
-    
+
     // Update dashboard if active profile was changed
     const activeId = localStorage.getItem("activeProfileId");
     if (activeId === profileId) {
@@ -688,3 +726,37 @@ window.updateRequestStatus = function(profileId, newStatus) {
     }
   }
 };
+
+
+const regionSelect = document.getElementById("reg-region");
+const comunaSelect = document.getElementById("reg-commune");
+
+// Llenar regiones al cargar
+window.addEventListener("DOMContentLoaded", () => {
+  for (const region in chileData) {
+    const option = document.createElement("option");
+    option.value = region;
+    option.textContent = region;
+    regionSelect.appendChild(option);
+  }
+});
+
+// Actualizar comunas cuando cambia la región
+regionSelect.addEventListener("change", () => {
+  const region = regionSelect.value;
+
+  // Limpia comunas anteriores
+  comunaSelect.innerHTML = "<option value=''>Selecciona tu comuna</option>";
+
+  if (region && chileData[region]) {
+    chileData[region].forEach(comuna => {
+      const option = document.createElement("option");
+      option.value = comuna;
+      option.textContent = comuna;
+      comunaSelect.appendChild(option);
+    });
+    comunaSelect.disabled = false;
+  } else {
+    comunaSelect.disabled = true;
+  }
+});
