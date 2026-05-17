@@ -13,7 +13,7 @@ Una plataforma web completa para la adopción responsable de mascotas, desarroll
 3. [Estructura de Archivos](#estructura-de-archivos)
 4. [Características Principales](#características-principales)
 5. [Requisitos Técnicos](#requisitos-técnicos)
-6. [Prompt Original (Antigravity)](#prompt-original-antigravity)
+6. [Prompt Original para Evaluación 2(Antigravity)](#prompt-original-antigravity)
 7. [Nuevas Integraciones](#nuevas-integraciones)
 8. [Manual de Verificación](#manual-de-verificación)
 9. [Desarrollo con IA](#desarrollo-con-ia)
@@ -22,7 +22,7 @@ Una plataforma web completa para la adopción responsable de mascotas, desarroll
 
 ## 🎯 Descripción General
 
-**Camino a Casa** es una plataforma complementaria a la landing page principal que facilita:
+**Camino a la adopcion** es una plataforma complementaria a la landing page principal que facilita:
 
 - ✅ **Registro seguro** de adoptantes con validación de datos
 - 👤 **Perfiles personalizados** con antecedentes adoptivos
@@ -229,7 +229,7 @@ Camino-a-casa/
 
 ---
 
-## 📝 Prompt Original (Antigravity)
+## 📝 Prompt Original para Evaluacion 2 (Antigravity)
 
 Este proyecto fue desarrollado utilizando el siguiente prompt de especificación:
 
