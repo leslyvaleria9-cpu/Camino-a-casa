@@ -22,7 +22,9 @@ Una plataforma web completa para la adopción responsable de mascotas, desarroll
 
 ## 🎯 Descripción General
 
+
 **Camino a la adopción** es una plataforma complementaria a la landing page principal que facilita:
+
 
 - ✅ **Registro seguro** de adoptantes con validación de datos
 - 👤 **Perfiles personalizados** con antecedentes adoptivos
@@ -235,9 +237,11 @@ La aplicación utiliza **JavaScript puro** sin dependencias externas ni framewor
 
 ---
 
+
 ### ⭐⭐⭐ PROMPT ORIGINAL EVALUACIÓN 2 (ANTIGRAVITY) ⭐⭐⭐
 
 > **🚀 SECCIÓN DESTACADA - Punto Clave del Proyecto**
+
 
 Este proyecto fue desarrollado utilizando el siguiente prompt de especificación:
 
