@@ -496,10 +496,10 @@ const mockPets = [
   { id: 2, name: "Mico", type: "Perro", img: "../img/Mico.jpeg" },
   { id: 3, name: "Polo", type: "Perro", img: "../img/Polo.jpeg" },
   { id: 4, name: "Vigilante", type: "Gato", img: "../img/Vigilante.jpeg" },
-  { id: 5, name: "Yiya", type: "Perro", img: "../img/Yiya.jpeg" },
+  { id: 5, name: "Yiya", type: "Gato", img: "../img/Yiya.jpeg" },
   { id: 6, name: "Pantro", type: "Gato", img: "../img/pantro.jpeg" },
   { id: 7, name: "Los 4 Mosqueteros", type: "Gatos", img: "../img/4_mosqueteros.jpeg" },
-  { id: 8, name: "Lana y Pluma", type: "Perros", img: "../img/Lana y Pluma.jpeg" }
+  { id: 8, name: "Lana y Pluma", type: "Gatos", img: "../img/Lana y Pluma.jpeg" }
 ];
 
 function getAdoptionRequests() {

@@ -2,7 +2,7 @@
 
 **Conectando corazones con patitas desde 2026** 💖
 
-Una plataforma web completa para la adopción responsable de mascotas, desarrollada con HTML5, CSS3 y JavaScript ES6+. El proyecto combina una landing page atractiva con un sistema integral de registro y validación de adoptantes.
+Una plataforma web completa para la adopción responsable de mascotas, desarrollada con **HTML5, CSS3 y Vanilla JavaScript (ES6+)**. El proyecto combina una landing page atractiva con un sistema integral de registro y validación de adoptantes.
 
 ---
 
@@ -13,7 +13,7 @@ Una plataforma web completa para la adopción responsable de mascotas, desarroll
 3. [Estructura de Archivos](#estructura-de-archivos)
 4. [Características Principales](#características-principales)
 5. [Requisitos Técnicos](#requisitos-técnicos)
-6. [Prompt Original (Antigravity)](#prompt-original-antigravity)
+6. ⭐⭐⭐ **[PROMPT ORIGINAL EVALUACIÓN 2 (ANTIGRAVITY)](###-prompt-original-evaluación-2-antigravity)** ⭐⭐⭐
 7. [Nuevas Integraciones](#nuevas-integraciones)
 8. [Manual de Verificación](#manual-de-verificación)
 9. [Desarrollo con IA](#desarrollo-con-ia)
@@ -22,7 +22,7 @@ Una plataforma web completa para la adopción responsable de mascotas, desarroll
 
 ## 🎯 Descripción General
 
-**Camino a Casa** es una plataforma complementaria a la landing page principal que facilita:
+**Camino a la adopción** es una plataforma complementaria a la landing page principal que facilita:
 
 - ✅ **Registro seguro** de adoptantes con validación de datos
 - 👤 **Perfiles personalizados** con antecedentes adoptivos
@@ -137,28 +137,30 @@ Camino-a-casa/
   - Estrellas de calificación
 
 #### `adoptantes/js/main.js`
-- **Propósito**: Lógica principal de la aplicación
+- **Propósito**: Lógica principal de la aplicación (Vanilla JavaScript puro)
 - **Funcionalidades**:
   - Gestión de vistas (mostrar/ocultar secciones)
-  - Event listeners para formularios
+  - Event listeners nativos para formularios
   - Flujo de registro → verificación → perfil
-  - Guardado en localStorage
+  - Almacenamiento con localStorage (sin dependencias)
   - Cálculo automático de calificación
   - Panel de administración (CRUD de solicitudes)
   - Selección de mascotas
+  - Manipulación directa del DOM con querySelector
 - **Variables clave**:
   - `tempPersonalData`: datos temporales del usuario
   - `adopterProfiles`: array de perfiles guardados
   - Estados de vista (active/hidden)
 
 #### `adoptantes/js/validators.js`
-- **Propósito**: Funciones de validación reutilizables
+- **Propósito**: Funciones de validación reutilizables (Vanilla JS puro)
+- **Implementación**: Funciones puras sin dependencias externas
 - **Exporta**:
-  - `validateRUT(rut)`: Validación de RUT chileno
-  - `calculateRutDigit(rutNum)`: Cálculo de dígito verificador
+  - `validateRUT(rut)`: Validación de RUT chileno con algoritmo chileno
+  - `calculateRutDigit(rutNum)`: Cálculo de dígito verificador (módulo 11)
   - `formatRUT(rut)`: Formateo de RUT (12.345.678-9)
-  - `validatePhone(phone)`: Validación de celular
-  - `validateEmail(email)`: Validación de correo
+  - `validatePhone(phone)`: Validación de celular con regex
+  - `validateEmail(email)`: Validación de correo con regex
   - `validateRequired(value)`: Validación de campos obligatorios
 
 #### `adoptantes/js/chile.js`
@@ -206,13 +208,17 @@ Camino-a-casa/
 
 ## 🔧 Requisitos Técnicos
 
-### **JavaScript ES6+**
+### **Vanilla JavaScript (ES6+)** 🎯
+La aplicación utiliza **JavaScript puro** sin dependencias externas ni frameworks:
 - ✓ Arrow functions y template literals
 - ✓ Destructuring y spread operator
 - ✓ Manipulación del DOM con querySelector
-- ✓ Event listeners y preventDefault
+- ✓ Event listeners nativos y preventDefault
+- ✓ localStorage para persistencia de datos
 - ✓ JSON parse/stringify
 - ✓ Métodos de arrays (map, filter, find, forEach)
+- ✓ Validaciones personalizadas con regex
+- ✓ Gestión de eventos con delegación
 
 ### **HTML5**
 - ✓ Formularios semánticos
@@ -229,7 +235,9 @@ Camino-a-casa/
 
 ---
 
-## 📝 Prompt Original (Antigravity)
+### ⭐⭐⭐ PROMPT ORIGINAL EVALUACIÓN 2 (ANTIGRAVITY) ⭐⭐⭐
+
+> **🚀 SECCIÓN DESTACADA - Punto Clave del Proyecto**
 
 Este proyecto fue desarrollado utilizando el siguiente prompt de especificación:
 
@@ -261,7 +269,7 @@ SISTEMA DE CALIFICACIÓN JERÁRQUICO
 - Estados de perfil: "Completo", "En revisión", "Incompleto".
 
 REQUISITOS TÉCNICOS
-JavaScript ES6+:
+JavaScript ES6+(Vanilla JS):
 - Manipulación dinámica del DOM (mostrar/ocultar secciones, feedback visual).
 - Uso de arreglos y objetos para gestionar adoptantes y criterios de calificación.
 - Funciones modulares y reutilizables.
@@ -390,11 +398,12 @@ Este plan añade funcionalidad para que los adoptantes con perfil completo pueda
 - **GitHub Copilot**: Desarrollo, optimización y debugging del código
 
 ### **Mejoras Aplicadas**
-- ✓ Refactorización de código para modularidad
-- ✓ Optimización de validadores
-- ✓ Mejora de accesibilidad (aria-labels)
+- ✓ Implementación de **Vanilla JavaScript puro** sin dependencias externas
+- ✓ Refactorización de código para modularidad y legibilidad
+- ✓ Optimización de validadores con algoritmos eficientes
+- ✓ Mejora de accesibilidad (aria-labels y semántica HTML5)
 - ✓ Debugging de errores de referencias a elementos inexistentes
-- ✓ Integración de datos de regiones chilenas
+- ✓ Integración de datos de regiones chilenas con estructura optimizada
 
 ### **Evidencia de Desarrollo**
 Este README documenta que **Camino a Casa** fue desarrollado con asistencia de inteligencia artificial (Antigravity y GitHub Copilot) para estructura, estilos y lógica de negocio. Todos los componentes fueron revisados y optimizados para garantizar calidad profesional.
